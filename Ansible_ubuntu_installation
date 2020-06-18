@@ -1,0 +1,48 @@
+Login as: ubuntu
+=>sudo apt-get update
+update both master and slave
+
+ sudo apt install software-properties-common
+=> on Master master ip(10.0.1.207)
+
+sudo apt-add-reopository ppa:ansible/ansible
+=> on master
+
+sudo apt-get update
+sudo apt install ansible
+=>on master
+
+sudo apt-get update
+sudo apt-get install python
+=>on host
+
+https://www.youtube.com/watch?v=Km3BCQnV6sw==> video for automating ssh
+
+cd .ssh/
+cat authorized_keys  known_hosts
+ ssh-keygen
+ do not enter anything in argument
+ cat id_rsa.pub
+ copy the content of above file
+=> on Master
+
+paste the content of id_rsa.pub from master and paste in the authorized_keys file on slave
+
+ssh from master to slave
+ubuntu@ip-10-0-1-207:~/.ssh$ ssh ubuntu@10.0.1.215 (slave ip)
+
+exit from slave
+
+add ips to Ansible inventory
+==>sudo nano /etc/ansible/hosts 
+
+[production]
+slave1 ansible_ssh_host=107.22.133.167 (ip of slave)
+
+ubuntu@ip-10-0-1-207:/etc/ansible$ ansible -m ping all
+
+how to run playbook {alwaysa exit from root to run playbook}
+ubuntu@ip-10-0-1-207:/etc/ansible$ ansible-playbook playbook-pingtest.yml
+
+ 
+

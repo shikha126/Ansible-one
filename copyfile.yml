@@ -1,0 +1,8 @@
+-
+  name: copy file from source to dest
+  hosts: all
+  tasks:
+    - name: copy file from source to dest test
+	    copy:
+        src: /tmp/shikha/Deep.txt
+        dest: /tmp/shikha/Deep.txt
